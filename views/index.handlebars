@@ -24,8 +24,7 @@
         {{#each restaurants}}
         <a href="/restaurants/{{ this.id }}" class="text-secondary">
           <div class="card mb-3">
-            <img class="card-img-top" src= "{{ this.image }}"
-              alt="{{ this.name_en }}">
+            <img class="card-img-top" src="{{ this.image }}" alt="{{ this.name_en }}">
             <div class="card-body p-3">
               <h6 class="card-title mb-1">{{ this.name }}</h6>
 
@@ -42,4 +41,7 @@
           </div>
         </a>
         {{/each}}
-        
+      </div>
+    </div>
+  </div>
+</div>
