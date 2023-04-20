@@ -1,5 +1,12 @@
+
 header {
   overflow: hidden;
+}
+
+body {
+  font-family: 'Noto Sans TC', sans-serif;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 600;
 }
 
 .navbar .navbar-brand {
@@ -20,17 +27,19 @@ header {
   filter: blur(3px);
 }
 
+.form .form-outer,
 .search-bar .search-bar-outer {
   margin: 0 auto;
   max-width: 680px;
   background-color: #fce2cf;
   border-radius: 8px;
-  padding: 20px 30px;
+  padding: 20px 50px;
   border: 0;
   margin-top: -60px;
   box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
 }
 
+.form .form-inner,
 .search-bar .search-bar-inner h4 {
   color: #9b4b4b;
 }
@@ -77,6 +86,24 @@ header {
   font-size: 3rem;
   text-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
 }
+
+.form-title-box {
+  margin: auto;
+  margin-top: 40px;
+  padding: 16px 0;
+  max-width: 550px;
+  background-color: #f8ece5;
+  border-radius: 5px;
+  border: 0px;
+}
+
+.form-title {
+  text-align: center;
+  margin: auto;
+  font-size: larger;
+}
+
+
 
 @media screen and (max-width: 992px) {
 
