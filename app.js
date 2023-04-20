@@ -4,6 +4,7 @@ const port = 3000
 const exphbs = require('express-handlebars')
 const mongoose = require('mongoose')
 const Restaurant = require('./models/restaurant')
+const restaurant = require('./models/restaurant')
 
 if (process.env.NODE_ENV !== 'production') {
   require("dotenv").config()
@@ -40,9 +41,12 @@ app.get('/restaurants/new', (req, res) => {
   return res.render('new')
 })
 
-app.get('/restaurants/:restaurant_id', (req, res) => {
-  const restaurant = restaurantList.results.find((item) => item.id.toString() === req.params.restaurant_id)
-  res.render('show', { restaurant: restaurant })
+app.get('/restaurants/:id', (req, res) => {
+  const id = req.params.id
+  return Restaurant.findById(id)
+    .lean()
+    .then((restaurant) => res.render('show', { restaurant }))
+    .catch((error) => console.log('error'))
 })
 
 app.get('/search', (req, res) => {
