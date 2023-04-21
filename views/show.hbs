@@ -2,14 +2,19 @@
 <div class="container">
   <div class="row">
     <div class="col-12 col-md-10 mx-auto">
-
-      <p class="mb-1">
+      <div class="d-flex justify-content-between">
+        <p class="mb-1">
+          <span class="text-secondary">
+            <i class="fas fa-utensils pr-2"></i>
+            類別：
+          </span>
+          {{ restaurant.category }}
+        </p>
         <span class="text-secondary">
-          <i class="fas fa-utensils pr-2"></i>
-          類別：
+          <a href="./{{ restaurant._id }}/edit"><button class="badge btn-success button">edit</button></a>
+          <a href="/"><button class="badge btn-major button"><i class="fas fa-home"></i></button></a>
         </span>
-        {{ restaurant.category }}
-      </p>
+      </div>
 
       <p class="mb-1">
         <span class="text-secondary">
@@ -25,7 +30,7 @@
       <p class="mb-1">
         <span class="text-secondary">
           <i class="fas fa-mobile-alt pr-2"></i>
-           電話：
+          電話：
         </span>
         {{ restaurant.phone }}
       </p>
@@ -37,6 +42,7 @@
         </span>
         {{ restaurant.description }}
       </p>
+
 
       <img class="rounded mx-auto d-block mb-4 w-100" src="{{ restaurant.image }}" alt="{{ restaurant.name_en }}"
         style="max-width: 600px;">

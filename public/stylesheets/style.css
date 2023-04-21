@@ -4,9 +4,16 @@ header {
 }
 
 body {
+  height: 100%;
   font-family: 'Noto Sans TC', sans-serif;
   font-family: 'Roboto', sans-serif;
   font-weight: 600;
+}
+
+footer {
+  height: 60px;
+  margin-top: 60px;
+  background-color: #9b4b4b;
 }
 
 .navbar .navbar-brand {
@@ -73,6 +80,14 @@ body {
   white-space: nowrap;
 }
 
+.button {
+  border: 0; 
+  height: 25px; 
+  width: 70px; 
+  font-size: medium; 
+  font-weight: 500;
+}
+
 .restaurant-category {
   color: #666666;
   font-size: 0.8rem;
@@ -92,7 +107,7 @@ body {
   margin-top: 40px;
   padding: 16px 0;
   max-width: 550px;
-  background-color: #f8ece5;
+  background-color: #faf1ec;
   border-radius: 5px;
   border: 0px;
 }

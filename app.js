@@ -63,10 +63,26 @@ app.get('/search', (req, res) => {
     .catch((error) => console.log('error'))
 })
 
+app.get('/restaurants/:id/edit', (req, res) => {
+  const id = req.params.id
+  Restaurant.findById(id)
+    .lean()
+    .then((restaurant) => res.render('edit', { restaurant }))
+    .catch((error) => console.log('error'))
+})
+
 app.post('/restaurants', (req, res) => {
   const newRestaurant = req.body
   return Restaurant.create(newRestaurant)
     .then(() => res.redirect('/'))
+    .catch((error) => console.log('error'))
+})
+
+app.post('/restaurants/:id/edit', (req, res) => {
+  const id = req.params.id
+  const restaurant = req.body
+  return Restaurant.findByIdAndUpdate(id, restaurant)
+    .then(() => res.redirect(`/restaurants/${id}`))
     .catch((error) => console.log('error'))
 })
 
