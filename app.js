@@ -11,7 +11,7 @@ if (process.env.NODE_ENV !== 'production') {
 }
 
 //set MongoDB connection
-mongoose.connect(process.env.MONGODB_URI, { useNewUrlParser: true, useUnifiedTopology: true })
+mongoose.connect(process.env.MONGODB_URI, { useNewUrlParser: true, useUnifiedTopology: true, useFindAndModify: false })
 
 const db = mongoose.connection
 
@@ -86,7 +86,14 @@ app.post('/restaurants/:id/edit', (req, res) => {
     .catch((error) => console.log('error'))
 })
 
+app.post('/restaurants/:id/delete', (req, res) => {
+  const id = req.params.id
+  return Restaurant.findById(id)
+    .then((restaurant) => restaurant.remove())
+    .then(() => res.redirect('/'))
+    .catch((error) => console.log('error'))
+})
+
 app.listen(port, () => {
   console.log(`Express is listening on localhost:${port}` )
 })
-

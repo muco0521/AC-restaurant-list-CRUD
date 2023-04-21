@@ -12,6 +12,9 @@
         </p>
         <span class="text-secondary">
           <a href="./{{ restaurant._id }}/edit"><button class="badge btn-success button">edit</button></a>
+          <form class="d-inline-block" action="/restaurants/{{ restaurant._id }}/delete" method="post">
+            <button type="submit" class="badge bg-danger button">Delete</button>
+          </form>
           <a href="/"><button class="badge btn-major button"><i class="fas fa-home"></i></button></a>
         </span>
       </div>
