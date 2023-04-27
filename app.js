@@ -4,7 +4,6 @@ const port = 3000
 const exphbs = require('express-handlebars')
 const mongoose = require('mongoose')
 const Restaurant = require('./models/restaurant')
-const restaurant = require('./models/restaurant')
 
 if (process.env.NODE_ENV !== 'production') {
   require("dotenv").config()

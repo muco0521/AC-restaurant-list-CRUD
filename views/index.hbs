@@ -1,60 +1,70 @@
-<!-- search bar -->
-<div class="container search-bar">
-  <div class="search-bar-outer">
-    <div class="search-bar-inner">
-      <form action="/search">
-        <h4 class="mb-2">尋找餐廳：</h4>
-        <div class="input-group">
-          <a href="/restaurants/new" class="btn btn-major" id="create-button">增加餐廳清單</a>
-          <input type="text" name="keyword" class="form-control" placeholder="搜尋餐廳、分類" aria-label="Restaurant Name..."
-            value="{{keyword}}" aria-describedby="search-button">
-          <div class="input-group-append">
-            <button class="btn btn-major" type="submit" id="search-button"><i class="fas fa-search"></i></button>
+<div class="container">
+  <!-- search bar -->
+  <div class="search-bar">
+    <div class="search-bar-outer">
+      <div class="search-bar-inner">
+        <form action="/search">
+          <h4 class="mb-2">尋找餐廳：</h4>
+          <div class="input-group">
+            <a href="/restaurants/new" class="btn btn-major" id="create-button">新增餐廳</a>
+            <input type="text" name="keyword" class="form-control" placeholder="搜尋餐廳、分類" aria-label="Restaurant Name..."
+              value="{{keyword}}" aria-describedby="search-button">
+            <div class="input-group-append">
+              <button class="btn btn-major" type="submit" id="search-button"><i class="fas fa-search"></i></button>
+            </div>
           </div>
-        </div>
-      </form>
+        </form>
+      </div>
     </div>
   </div>
-</div>
 
-<!-- restaurant list -->
-<div class="container mt-5">
-  <div class="row">
+  <!-- restaurant list -->
+  <div class="row mt-5">
     <div class="col-md-10 col-12 mx-auto">
+      {{#unless restaurants}}
+      <div class="d-flex flex-column align-items-center mt-5">
+        <i class="fas fa-exclamation-circle fa-5x text-danger "></i>
+        <h4 class="text-secondary mt-4">找不到餐廳!</h4>
+      </div>
+      {{/unless}}
       <div class="row row-cols-sm-3">
         {{#each restaurants}}
+        <div class="mb-3">
+          <div class="card mb-1">
+            <a href="/restaurants/{{ this._id }}" class="text-secondary"><img class="card-img-top"
+                src="{{ this.image }}" alt="{{ this.name_en }}"></a>
+            <div class="card-body ">
+              <a href="/restaurants/{{ this._id }}" class="text-secondary">
+                <h6 class="card-title">{{ this.name }}</h6>
+              </a>
 
-        <div class="card mb-3">
-          <a href="/restaurants/{{ this._id }}" class="text-secondary"><img class="card-img-top" src="{{ this.image }}"
-              alt="{{ this.name_en }}"></a>
-          <div class="card-body p-3">
-            <a href="/restaurants/{{ this._id }}" class="text-secondary">
-              <h6 class="card-title mb-1">{{ this.name }}</h6>
-            </a>
+              <div class="restaurant-category">
+                <i class="fas fa-utensils pr-2"></i> {{ this.category }}
+              </div>
 
-            <div class="restaurant-category mb-1">
-              <i class="fas fa-utensils pr-2"></i> {{ this.category }}
-            </div>
-
-            <div class="d-flex justify-content-between">
               <span class="badge bg-warning">
                 {{ this.rating }}
                 <i class="fas fa-star fa-xs"></i>
               </span>
-              <span>
-                <a href="./restaurants/{{ this._id }}/edit"><button class="badge bg-success button">Edit</button></a>
-                <form class="d-inline-block" action="/restaurants/{{ this._id }}/delete" method="post">
-                  <button type="submit" class="badge bg-danger button">Delete</button>
-                </form>
-              </span>
             </div>
 
+            <div class="card-footer text-muted">
+              <div class="d-flex justify-content-end my-1">
+                <span>
+                  <a href="./restaurants/{{ this._id }}/edit"><button class="badge bg-success button">Edit</button></a>
+                  <a href="./restaurants/{{ this._id }}"><button class="badge bg-success button">Detail</button></a>
+                  <form class="d-inline-block" action="/restaurants/{{ this._id }}/delete" method="POST">
+                    <button type="submit" class="badge bg-danger button">Delete</button>
+                  </form>
+                </span>
+              </div>
+            </div>
+            
           </div>
         </div>
-
-
         {{/each}}
       </div>
     </div>
   </div>
+
 </div>
